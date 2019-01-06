@@ -9,5 +9,5 @@
 const wordEvents = require('./wordprocessor/wordfrequencies.js')
 
 $(() => {
-  ('#enter-text-form').on('submit', wordEvents.wordLetterFrequencies)
+  $('#enter-text-form').on('submit', wordEvents.wordLetterFrequencies)
 })
