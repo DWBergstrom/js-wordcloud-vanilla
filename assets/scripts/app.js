@@ -6,6 +6,8 @@
 // use require without a reference to ensure a file is bundled
 // require('./example')
 
+const wordEvents = require('./wordprocessor/wordfrequencies.js')
+
 $(() => {
-  // your JS code goes here
+  ('#enter-text-form').on('submit', wordEvents.wordLetterFrequencies)
 })

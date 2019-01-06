@@ -26,6 +26,7 @@
     "eslint-plugin-standard": "^3.0.1",
     "expose-loader": "^0.7.5",
     "file-loader": "^1.1.11",
+    "fsevents": "^1.2.4",
     "grunt": "^1.0.2",
     "grunt-eslint": "^20.1.0",
     "grunt-jsonlint": "^1.1.0",

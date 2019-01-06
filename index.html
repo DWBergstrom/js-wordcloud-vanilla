@@ -12,6 +12,36 @@
       <script src="public/application.js" type="text/javascript" charset="utf-8" defer></script>
     </head>
     <body>
-      <h1>Browser Template</h1>
+      <h1>AlphaLyze</h1>
+
+      <form id="enter-text-form">
+        Enter some text:<br />
+        <textarea rows="4" cols="50" name="comment" form="enter-text-form">
+
+        </textarea>
+        <br />
+        <input type="submit" value="Analyze" />
+      </form>
+
+
+
+      <table>
+        <tr>
+          <th>Word</th>
+          <th>Count</th>
+          <th>Percentage</th>
+        </tr>
+        <tbody id="wtbody"></tbody>
+      </table>
+
+      <table>
+        <tr>
+          <th>Character</th>
+          <th>Count</th>
+          <th>Percentage</th>
+        </tr>
+        <tbody id="ctbody"></tbody>
+      </table>
+
     </body>
 </html>
