@@ -8,9 +8,10 @@ const wordLetterFrequencies = function (event) {
   $('#ctbody').html('')
   const data = getFormFields(event.target)
   // console.log('data.comment is ', data.comment)
-  const string = data.comment.trim()
-  $('#user-input').html(string)
-  const wordArray = string.split(' ')
+  const charString = data.comment.trim()
+  $('#user-input').html(charString)
+  const wordString = charString.replace(/[^\w\s]|_/g, '').replace(/\s+/g, ' ')
+  const wordArray = wordString.split(' ')
   // console.log('wordArray is ', wordArray)
   const totalWords = wordArray.length
   const wordObject = {}
@@ -24,7 +25,7 @@ const wordLetterFrequencies = function (event) {
     }
   })
 
-  const charArray = string.split('')
+  const charArray = charString.split('')
   // console.log('charArray is ', charArray)
   const totalChars = charArray.length
   const charObject = {}
