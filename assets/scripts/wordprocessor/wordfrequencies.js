@@ -1,6 +1,13 @@
 'use strict'
 
+const d3 = require('d3')
 const getFormFields = require('../../../lib/get-form-fields.js')
+const datamuse = require('datamuse')
+
+datamuse.request('words?ml=ringing in the ears')
+  .then((json) => {
+    console.log('datamuse results: ', json)
+  })
 
 const wordLetterFrequencies = function (event) {
   event.preventDefault()
@@ -45,8 +52,43 @@ const wordLetterFrequencies = function (event) {
     charObject[char].frequency = Number(((charObject[char].count / totalChars) * 100).toFixed(2))
   }
 
-  console.log('wordObject is ', wordObject)
+  console.log('wordObject object.entries is ', Object.entries(wordObject))
   console.log('charObject is ', charObject)
+
+  const d3Data = Object.entries(wordObject)
+
+  // d3 chart
+
+  function drawChart (d3Data) {
+    // set the dimensions and margins of the graph
+    let margin = {top: 20, right: 20, bottom: 30, left: 50},
+    width = 600 - margin.left - margin.right,
+    height = 200 - margin.top - margin.bottom
+
+    console.log('we are in drawChart and d3Data is ', d3Data)
+    // set the ranges
+    const x = d3.scaleTime().range([0, width])
+    const y = d3.scaleLinear().range([height, 0])
+
+    // define the line
+    const valueline = d3.line()
+      .x(function (d) {
+        console.log('we are in valueline', d)
+        return x(d.word)
+      })
+      .y(function (d) { return y(d.percentage) })
+
+    // append the svg obgect to the body of the page
+    // appends a 'group' element to 'svg'
+    // moves the 'group' element to the top left margin
+    const svg = d3.select('#d3-chart').append('svg')
+      .attr('width', width + margin.left + margin.right)
+      .attr('height', height + margin.top + margin.bottom)
+      .append('g').attr('transform',
+        'translate(' + margin.left + ',' + margin.top + ')')
+  }
+
+  drawChart(d3Data)
 
   const wordTotalHTML = `(<tr> <td>Total Words: </td> <td>${totalWords}</td> <td>N/A</td> </tr>)`
   $('#wtbody').append(wordTotalHTML)
@@ -55,7 +97,7 @@ const wordLetterFrequencies = function (event) {
   $('#ctbody').append(charTotalHTML)
 
   for (const word in wordObject) {
-    const wordHTML = `(<tr> <td>${word}</td> <td>${wordObject[word].count}</td> <td>${wordObject[word].frequency}%</td> </tr>)`
+    const wordHTML = `(<tr> <td><a data-id="${word}" class="define" href="#definition-div">${word}</a></td> <td>${wordObject[word].count}</td> <td>${wordObject[word].frequency}%</td> </tr>)`
     $('#wtbody').append(wordHTML)
   }
 

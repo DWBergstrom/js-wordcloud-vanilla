@@ -7,7 +7,9 @@
 // require('./example')
 
 const wordEvents = require('./wordprocessor/wordfrequencies.js')
+const wordDefine = require('./wordprocessor/wordDefinitions.js')
 
 $(() => {
   $('#enter-text-form').on('submit', wordEvents.wordLetterFrequencies)
+  $('a').click(() => console.log('word clicked'))
 })

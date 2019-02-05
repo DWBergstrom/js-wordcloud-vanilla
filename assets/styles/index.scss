@@ -32,3 +32,13 @@ td, th {
 tr:nth-child(even) {
   background-color: #dddddd;
 }
+
+.line {
+   fill: none;
+   stroke: green;
+   stroke-width: 5px;
+}
+
+#d3-chart {
+  border: 1px solid lightgray;
+}
