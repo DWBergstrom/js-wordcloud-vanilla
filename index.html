@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+    <head>
+      <title>AlphaLyze</title>
+      <meta name="viewport" content="width=device-width, initial-scale=1">
+
+      <!-- Do not add `link` tags-->
+      <link rel="shortcut icon" type="image/x-icon" href="favicon.ico">
+
+      <!-- Do not add `script` tags-->
+      <script src="public/vendor.js" type="text/javascript" charset="utf-8" defer></script>
+      <script src="public/application.js" type="text/javascript" charset="utf-8" defer></script>
+    </head>
+    <body>
+      <h1>AlphaLyze</h1>
+
+      <form id="enter-text-form">
+        Enter some text:<br />
+        <textarea rows="4" cols="50" name="comment" form="enter-text-form">
+
+        </textarea>
+        <br />
+        <input type="submit" value="Alphalyze" />
+      </form>
+
+
+      <div>
+        <h3>Your original input:</h3>
+        <div id="user-input">
+
+        </div>
+      </div>
+
+      <h3>Word and character analysis results:</h3>
+      <div class="tables-container">
+        <div id="table1">
+          <table class="table-class">
+            <tr>
+              <th>Word</th>
+              <th>Count</th>
+              <th>Frequency</th>
+            </tr>
+            <tbody id="wtbody"></tbody>
+          </table>
+        </div>
+
+        <div id="table2">
+          <table class="table-class">
+            <tr>
+              <th>Character</th>
+              <th>Count</th>
+              <th>Frequency</th>
+            </tr>
+            <tbody id="ctbody"></tbody>
+          </table>
+        </div>
+      </div>
+
+      <div id="definition-div">
+          <h3>Definition:</h3>
+      </div>
+
+
+      <div id="d3-chart">
+        <!-- <svg width = "300" height = "300">
+            <line x1 = "100" y1 = "100"
+               x2 = "200" y2 = "200" style = "stroke:rgb(255,0,255);
+               stroke-width:4"/>
+         </svg> -->
+      </div>
+
+
+    </body>
+</html>
